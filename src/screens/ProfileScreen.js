@@ -106,7 +106,7 @@ const ProfileScreen = ({ navigation }) => {
               onPress={handleEditNow}
               activeOpacity={0.85}
             >
-              <Text style={styles.editNowText} numberOfLines={1} adjustsFontSizeToFit>
+              <Text style={styles.editNowText}>
                 {isEditing ? 'Save Now' : 'Edit Now'}
               </Text>
             </TouchableOpacity>
@@ -116,7 +116,7 @@ const ProfileScreen = ({ navigation }) => {
               onPress={handleCancel}
               activeOpacity={0.8}
             >
-              <Text style={styles.cancelText} numberOfLines={1} adjustsFontSizeToFit>
+              <Text style={styles.cancelText}>
                 Cancel
               </Text>
             </TouchableOpacity>
@@ -231,8 +231,8 @@ const styles = StyleSheet.create({
   },
   editNowButton: {
     flex: 1,
-    height: 48,
-    paddingHorizontal: 12,
+    height: 52,
+    paddingHorizontal: 16,
     backgroundColor: '#FF6F61',
     borderRadius: 14,
     justify: 'center',
@@ -240,26 +240,28 @@ const styles = StyleSheet.create({
   },
   editNowText: {
     color: '#FFFFFF',
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: '800',
     textAlign: 'center',
+    includeFontPadding: false,
   },
   cancelButton: {
     flex: 1,
-    height: 48,
-    paddingHorizontal: 12,
+    height: 52,
+    paddingHorizontal: 16,
     backgroundColor: '#FFFFFF',
     borderRadius: 14,
     borderWidth: 1.5,
-    borderColor: '#A0A0A0',
+    borderColor: '#94A3B8',
     justify: 'center',
     alignItems: 'center',
   },
   cancelText: {
-    color: '#71717A',
-    fontSize: 15,
+    color: '#64748B',
+    fontSize: 16,
     fontWeight: '800',
     textAlign: 'center',
+    includeFontPadding: false,
   },
 });
 
