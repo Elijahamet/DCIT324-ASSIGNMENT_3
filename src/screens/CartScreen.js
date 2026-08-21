@@ -3,7 +3,6 @@ import {
   View,
   Text,
   StyleSheet,
-  FlatList,
   Image,
   TouchableOpacity,
   TextInput,
@@ -18,9 +17,8 @@ import { useCart } from '../context/CartContext';
 const CartScreen = ({ navigation }) => {
   const { cartItems, updateQuantity, removeFromCart, cartSubtotal, clearCart } = useCart();
 
-  // Checkout Flow Step State: 'CART' -> 'METHOD_MODAL' -> 'DETAILS_MODAL' -> 'SUCCESS'
   const [checkoutStep, setCheckoutStep] = useState('CART');
-  const [paymentMethod, setPaymentMethod] = useState('CARD'); // 'CARD' or 'OTHER'
+  const [paymentMethod, setPaymentMethod] = useState('CARD');
   const [selectedCardType, setSelectedCardType] = useState('VISA');
   const [cardNumber, setCardNumber] = useState('4242 •••• •••• 4242');
   const [expMonth, setExpMonth] = useState('12');
@@ -59,13 +57,11 @@ const CartScreen = ({ navigation }) => {
 
         <View style={styles.cardDetails}>
           <Text style={styles.cardTitle}>{product.name}</Text>
-
           <Text style={styles.unitPrice}>${product.price?.toFixed(2)}</Text>
 
           <View style={styles.cardDivider} />
 
           <View style={styles.cardBottomRow}>
-            {/* Quantity Selector */}
             <View style={styles.qtyRow}>
               <TouchableOpacity
                 style={styles.squareQtyBtn}
@@ -101,7 +97,6 @@ const CartScreen = ({ navigation }) => {
     );
   };
 
-  // Render Step 4: Success View
   if (checkoutStep === 'SUCCESS') {
     return (
       <SafeAreaView style={styles.successContainer}>
@@ -122,7 +117,9 @@ const CartScreen = ({ navigation }) => {
             onPress={handleBackToHome}
             activeOpacity={0.85}
           >
-            <Text style={styles.backHomeText}>Back to Home</Text>
+            <Text style={styles.backHomeText} numberOfLines={1} adjustsFontSizeToFit>
+              Back to Home
+            </Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -167,7 +164,9 @@ const CartScreen = ({ navigation }) => {
             style={styles.shopBtn}
             onPress={() => navigation.navigate('HomeTab')}
           >
-            <Text style={styles.shopBtnText}>Shop Now</Text>
+            <Text style={styles.shopBtnText} numberOfLines={1} adjustsFontSizeToFit>
+              Shop Now
+            </Text>
           </TouchableOpacity>
         </View>
       ) : (
@@ -199,7 +198,9 @@ const CartScreen = ({ navigation }) => {
               onPress={handleConfirmOrderClick}
               activeOpacity={0.85}
             >
-              <Text style={styles.confirmOrderText}>Confirm Order</Text>
+              <Text style={styles.confirmOrderText} numberOfLines={1} adjustsFontSizeToFit>
+                Confirm Order
+              </Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -215,7 +216,6 @@ const CartScreen = ({ navigation }) => {
           <View style={styles.methodModalCard}>
             <Text style={styles.modalTitle}>Select your payment method</Text>
 
-            {/* Option 1: Credit/Debit Card */}
             <TouchableOpacity
               style={[
                 styles.methodOption,
@@ -238,7 +238,6 @@ const CartScreen = ({ navigation }) => {
               />
             </TouchableOpacity>
 
-            {/* Option 2: Other */}
             <TouchableOpacity
               style={[
                 styles.methodOption,
@@ -265,7 +264,9 @@ const CartScreen = ({ navigation }) => {
               onPress={handleProceedToDetails}
               activeOpacity={0.85}
             >
-              <Text style={styles.proceedBtnText}>Proceed</Text>
+              <Text style={styles.proceedBtnText} numberOfLines={1} adjustsFontSizeToFit>
+                Proceed
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -287,7 +288,6 @@ const CartScreen = ({ navigation }) => {
 
               <View style={styles.detailsDivider} />
 
-              {/* Card Type Radios */}
               <Text style={styles.inputLabel}>Card Type*</Text>
               <View style={styles.radioGroup}>
                 <TouchableOpacity
@@ -321,7 +321,6 @@ const CartScreen = ({ navigation }) => {
                 </TouchableOpacity>
               </View>
 
-              {/* Card Number Input */}
               <Text style={styles.inputLabel}>Card Number*</Text>
               <TextInput
                 style={styles.grayInput}
@@ -330,7 +329,6 @@ const CartScreen = ({ navigation }) => {
                 keyboardType="numeric"
               />
 
-              {/* Expiration Month & Year */}
               <View style={styles.expRow}>
                 <View style={styles.expCol}>
                   <Text style={styles.inputLabel}>Expiration Month*</Text>
@@ -349,7 +347,6 @@ const CartScreen = ({ navigation }) => {
                 </View>
               </View>
 
-              {/* CVN Input */}
               <Text style={styles.inputLabel}>CVN*</Text>
               <Text style={styles.cvnHint}>
                 This code is a three or four digit number printed on the back or front of credit cards
@@ -362,21 +359,21 @@ const CartScreen = ({ navigation }) => {
                 secureTextEntry
               />
 
-              {/* Your Order Pink Banner */}
               <Text style={styles.yourOrderLabel}>Your Order</Text>
               <View style={styles.pinkOrderBox}>
                 <Text style={styles.pinkOrderLabel}>Total amount</Text>
                 <Text style={styles.pinkOrderTotal}>${grandTotal.toFixed(2)}</Text>
               </View>
 
-              {/* Bottom Actions */}
               <View style={styles.modalActionsRow}>
                 <TouchableOpacity
                   style={styles.cancelOutlineBtn}
                   onPress={() => setCheckoutStep('CART')}
                   activeOpacity={0.8}
                 >
-                  <Text style={styles.cancelOutlineText}>Cancel</Text>
+                  <Text style={styles.cancelOutlineText} numberOfLines={1} adjustsFontSizeToFit>
+                    Cancel
+                  </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -384,7 +381,9 @@ const CartScreen = ({ navigation }) => {
                   onPress={handleFinalConfirm}
                   activeOpacity={0.85}
                 >
-                  <Text style={styles.confirmSolidText}>Confirm</Text>
+                  <Text style={styles.confirmSolidText} numberOfLines={1} adjustsFontSizeToFit>
+                    Confirm
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -407,7 +406,6 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     paddingBottom: 24,
     paddingHorizontal: 20,
-    position: 'relative',
   },
   headerRow: {
     flexDirection: 'row',
@@ -525,7 +523,7 @@ const styles = StyleSheet.create({
   },
   summaryRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justify: 'space-between',
     marginBottom: 10,
   },
   summaryLabel: {
@@ -550,6 +548,7 @@ const styles = StyleSheet.create({
   },
   confirmOrderBtn: {
     height: 52,
+    paddingHorizontal: 16,
     backgroundColor: '#FF6F61',
     borderRadius: 14,
     justify: 'center',
@@ -558,8 +557,9 @@ const styles = StyleSheet.create({
   },
   confirmOrderText: {
     color: '#FFFFFF',
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: '800',
+    textAlign: 'center',
   },
   emptyState: {
     flex: 1,
@@ -590,6 +590,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 15,
     fontWeight: '800',
+    textAlign: 'center',
   },
   modalOverlay: {
     flex: 1,
@@ -611,7 +612,7 @@ const styles = StyleSheet.create({
   methodOption: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justify: 'space-between',
     borderWidth: 1,
     borderColor: '#E2E8F0',
     borderRadius: 16,
@@ -657,6 +658,7 @@ const styles = StyleSheet.create({
   },
   proceedBtn: {
     height: 50,
+    paddingHorizontal: 16,
     backgroundColor: '#FF6F61',
     borderRadius: 14,
     justify: 'center',
@@ -665,8 +667,9 @@ const styles = StyleSheet.create({
   },
   proceedBtnText: {
     color: '#FFFFFF',
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: '800',
+    textAlign: 'center',
   },
   detailsModalContainer: {
     padding: 16,
@@ -809,6 +812,7 @@ const styles = StyleSheet.create({
   cancelOutlineBtn: {
     flex: 1,
     height: 48,
+    paddingHorizontal: 12,
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
     borderWidth: 2,
@@ -818,12 +822,14 @@ const styles = StyleSheet.create({
   },
   cancelOutlineText: {
     color: '#0F172A',
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '800',
+    textAlign: 'center',
   },
   confirmSolidBtn: {
     flex: 1,
     height: 48,
+    paddingHorizontal: 12,
     backgroundColor: '#FF6F61',
     borderRadius: 12,
     justify: 'center',
@@ -831,8 +837,9 @@ const styles = StyleSheet.create({
   },
   confirmSolidText: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '800',
+    textAlign: 'center',
   },
   successContainer: {
     flex: 1,
@@ -870,6 +877,7 @@ const styles = StyleSheet.create({
   backHomeBtn: {
     width: 220,
     height: 48,
+    paddingHorizontal: 16,
     backgroundColor: '#4338CA',
     borderRadius: 14,
     justify: 'center',
@@ -879,6 +887,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 15,
     fontWeight: '800',
+    textAlign: 'center',
   },
 });
 

@@ -40,7 +40,6 @@ const ProfileScreen = ({ navigation }) => {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
         {/* Top Pink / Blush Profile Section */}
         <View style={styles.topProfileSection}>
-          {/* ShopEase Top Right Logo */}
           <View style={styles.logoHeaderRow}>
             <View style={styles.logoContainer}>
               <View style={styles.bagIconWrapper}>
@@ -50,7 +49,6 @@ const ProfileScreen = ({ navigation }) => {
             </View>
           </View>
 
-          {/* User Avatar Circle */}
           <View style={styles.avatarCircleContainer}>
             <Image
               source={{ uri: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80' }}
@@ -108,7 +106,9 @@ const ProfileScreen = ({ navigation }) => {
               onPress={handleEditNow}
               activeOpacity={0.85}
             >
-              <Text style={styles.editNowText}>{isEditing ? 'Save Now' : 'Edit Now'}</Text>
+              <Text style={styles.editNowText} numberOfLines={1} adjustsFontSizeToFit>
+                {isEditing ? 'Save Now' : 'Edit Now'}
+              </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -116,7 +116,9 @@ const ProfileScreen = ({ navigation }) => {
               onPress={handleCancel}
               activeOpacity={0.8}
             >
-              <Text style={styles.cancelText}>Cancel</Text>
+              <Text style={styles.cancelText} numberOfLines={1} adjustsFontSizeToFit>
+                Cancel
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -143,7 +145,7 @@ const styles = StyleSheet.create({
   logoHeaderRow: {
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justify: 'flex-end',
     marginBottom: 8,
   },
   logoContainer: {
@@ -230,6 +232,7 @@ const styles = StyleSheet.create({
   editNowButton: {
     flex: 1,
     height: 48,
+    paddingHorizontal: 12,
     backgroundColor: '#FF6F61',
     borderRadius: 14,
     justify: 'center',
@@ -237,12 +240,14 @@ const styles = StyleSheet.create({
   },
   editNowText: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '800',
+    textAlign: 'center',
   },
   cancelButton: {
     flex: 1,
     height: 48,
+    paddingHorizontal: 12,
     backgroundColor: '#FFFFFF',
     borderRadius: 14,
     borderWidth: 1.5,
@@ -252,8 +257,9 @@ const styles = StyleSheet.create({
   },
   cancelText: {
     color: '#71717A',
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '800',
+    textAlign: 'center',
   },
 });
 

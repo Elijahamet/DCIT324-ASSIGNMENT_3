@@ -168,7 +168,9 @@ const ProductDetailsScreen = ({ route, navigation }) => {
               onPress={handleBuyNow}
               activeOpacity={0.85}
             >
-              <Text style={styles.buyNowText}>Buy now</Text>
+              <Text style={styles.buyNowText} numberOfLines={1} adjustsFontSizeToFit>
+                Buy now
+              </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -176,7 +178,9 @@ const ProductDetailsScreen = ({ route, navigation }) => {
               onPress={handleAddToCart}
               activeOpacity={0.85}
             >
-              <Text style={styles.addToCartOutlineText}>Add to cart</Text>
+              <Text style={styles.addToCartOutlineText} numberOfLines={1} adjustsFontSizeToFit>
+                Add to cart
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -273,7 +277,7 @@ const styles = StyleSheet.create({
   },
   paginationRow: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justify: 'center',
     alignItems: 'center',
     marginVertical: 14,
     gap: 6,
@@ -375,12 +379,13 @@ const styles = StyleSheet.create({
   },
   actionButtonsRow: {
     flexDirection: 'row',
-    gap: 14,
+    gap: 12,
     marginTop: 10,
   },
   buyNowBtn: {
     flex: 1,
     height: 50,
+    paddingHorizontal: 12,
     backgroundColor: '#52D160',
     borderRadius: 14,
     justify: 'center',
@@ -388,12 +393,14 @@ const styles = StyleSheet.create({
   },
   buyNowText: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '800',
+    textAlign: 'center',
   },
   addToCartOutlineBtn: {
     flex: 1,
     height: 50,
+    paddingHorizontal: 12,
     backgroundColor: '#FFFFFF',
     borderRadius: 14,
     borderWidth: 2,
@@ -403,8 +410,9 @@ const styles = StyleSheet.create({
   },
   addToCartOutlineText: {
     color: '#52D160',
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '800',
+    textAlign: 'center',
   },
 });
 
